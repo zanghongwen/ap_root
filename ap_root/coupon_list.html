@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>クーポン</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/coupon_list.js"></script>
+    <script src="./data/coupon.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var couponListView, Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            couponListView = new couponListView()
+            couponListView.init()
+
+            // ログ
+            Logs = new Logs()
+
+            // 初期化ログ
+            Logs.writeLog('couponListPageName', 'couponInitOperName')
+
+            // ページジャンプログ
+            Logs.log('couponListPageName')
+
+            if (coupon[sessionStorage.getItem('lang')] === undefined) {
+                Logs.writeLogAp('couponListPageName')
+            }
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <header class="l-header">
+        <h1 class="p-pagename__coupon" id="coupon"></h1>
+    </header>
+    <div class="l-container">
+        <div class="l-sub-header">
+            <div class="p-search-words">
+                <label id="genre"></label>
+                <label id="slash"></label>
+                <label id="distance"></label>
+            </div>
+        </div>
+        <div class="l-contents l-contents__list">
+            <ul id="coupons" class="p-grid__three">
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- 検索条件 -->
+    <div class="l-dropdown__genre">
+        <div class="p-dropdown__genre">
+        </div>
+        <p class="p-btn-genre"></p>
+    </div>
+    <div class="l-dropdown__distance">
+        <ul class="p-dropdown__distance">
+            <li><a href="javascript:void(0);" value="100" id="distanceLabel1"></a></li>
+            <li><a href="javascript:void(0);" value="300" id="distanceLabel2"></a></li>
+            <li><a href="javascript:void(0);" value="500" id="distanceLabel3"></a></li>
+            <li><a href="javascript:void(0);" value="1000" id="distanceLabel4"></a></li>
+            <li><a href="javascript:void(0);" value="2000" id="distanceLabel5"></a></li>
+            <li><a href="javascript:void(0);" value="3000" id="distanceLabel6"></a></li>
+        </ul>
+        <p class="p-btn-distance"></p>
+    </div>
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+</body>
+
+</html>

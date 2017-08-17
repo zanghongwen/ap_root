@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>地図・交通</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+        <script src="./lib/1/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+    var $jq = $.noConflict(true)
+    </script>
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/jquery-qrcode/jquery.qrcode-0.12.0.min.js"></script>
+    <script src="./lib/1/e-smart-zoom-jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/map_detail.js"></script>
+    <script src="./data/map.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var mapDetailView, Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            mapDetailView = new mapDetail()
+            mapDetailView.init()
+
+            // ログ
+            Logs = new Logs()
+
+            // 初期化ログ
+            Logs.writeLog('mapDetailPageName', 'mapInitOperName')
+
+            // ページジャンプログ
+            Logs.log('mapDetailPageName')
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <header class="l-header">
+        <h1 class="p-pagename__access" id="map"></h1>
+    </header>
+    <div class="l-container">
+        <div class="l-contents">
+            <div class="l-row-white" id="pdfIframe">
+                <!-- PDF表示 -->
+                <p id="pdf" class="u-txt-c"></p>
+                <p class="u-txt-c u-mt60"><a class="c-btn-download js-modal-open" id="qrDownload" data-target="modal" operId="mapDetailOperInfo"></a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- zoom -->
+    <div id="positionButtonDiv">
+        <p>
+            <span>
+                <img id="zoomInButton" class="zoomButton" src="./images/zoomIn.png" title="zoom in" alt="zoom in" />
+                <img id="zoomOutButton" class="zoomButton" src="./images/zoomOut.png" title="zoom out" alt="zoom out" />
+            </span>
+        </p>
+        <br>
+        <p>
+            <span class="positionButtonSpan">
+                <map name="positionMap" class="positionMapClass">
+                    <area id="topPositionMap" shape="rect" coords="20,0,40,20" title="move up" alt="move up"/>
+                    <area id="leftPositionMap" shape="rect" coords="0,20,20,40" title="move left" alt="move left"/>
+                    <area id="rightPositionMap" shape="rect" coords="40,20,60,40" title="move right" alt="move right"/>
+                    <area id="bottomPositionMap" shape="rect" coords="20,40,40,60" title="move bottom" alt="move bottom"/>
+                </map>
+                <img src="./images/position.png" usemap="#positionMap" />
+            </span>
+        </p>
+    </div>
+
+    <!-- ページのfooter  -->
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+    <div class="l-modal-content" id="modal">
+        <p class="c-modal-close js-modal-close"></p>
+        <div class="l-modal-block__blue">
+            <h2 class="p-modal-block__access"></h2>
+            <p class="u-txt-c" id="qrCode"></p>
+            <p class="u-txt-c u-mt35"><strong class="u-fz20 u-color-red" id="pdfDownloadContext"></strong></p>
+        </div>
+        <p class="u-mt40 u-txt-c"><a class="c-btn-close js-modal-close" id="close"></a></p>
+    </div>
+</body>
+
+</html>

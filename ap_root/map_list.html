@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <title>地図・交通</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/map_list.js"></script>
+    <script src="./data/map.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var mapView, Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            // ページ初期化
+            mapView = new mapView()
+            mapView.init()
+
+            // ログ
+            Logs = new Logs()
+
+            // 初期化ログ
+            Logs.writeLog('mapPageName', 'mapInitOperName')
+
+            // ページジャンプログ
+            Logs.log('mapPageName')
+
+            if (map[sessionStorage.getItem('lang')] === undefined) {
+                Logs.writeLogAp('mapPageName')
+            }
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <header class="l-header">
+        <h1 class="p-pagename__access" id="map"></h1>
+    </header>
+    <div class="l-container">
+        <div class="l-contents">
+            <h2 id="mapHeader" class="p-ttl-access"></h2>
+            <ul id="maps" class="p-grid__three">
+            </ul>
+            <br>
+            <h2 id="timetableHeader" class="p-ttl-access"></h2>
+            <ul id="timetables" class="p-grid__three">
+            </ul>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+</body>
+
+</html>

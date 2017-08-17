@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ホーム</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/home.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var home, Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            home = new homeView()
+            home.init()
+
+            // ログ
+            Logs = new Logs()
+
+            // 初期化ログ
+            Logs.writeLog('indexPageName', 'indexInitOperName')
+
+            // ページジャンプログ
+            Logs.log('indexPageName')
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <div class="l-container">
+        <div class="l-contents">
+            <h1 class="u-txt-c u-mb80"><img src="./images/ttl_menu.png" alt="Touch the menu"></h1>
+            <table class="p-home-nav">
+                <tr>
+                    <td><a href="spot_search.html" operId="spotOperName" class="p-hnav-search"><img src="./images/icon_btn_search.png"><span class="p-hnav-caption" id="spot"></span></a></td>
+                    <td><a href="coupon_search.html" operId="couponOperName" class="p-hnav-coupon"><img src="./images/icon_btn_coupon.png"><span class="p-hnav-caption" id="coupon"></span></a></td>
+                </tr>
+                <tr>
+                    <td><a href="map_list.html" operId="mapOperName" class="p-hnav-access"><img src="./images/icon_btn_access.png"><span class="p-hnav-caption" id="map"></span></a></td>
+                    <td><a href="brochure_list.html" operId="brochureOperName" class="p-hnav-pamphlet"><img src="./images/icon_btn_pamphlet.png"><span class="p-hnav-caption" id="brochure"></span></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+</body>
+
+</html>

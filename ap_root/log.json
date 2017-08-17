@@ -1,0 +1,74 @@
+ {
+     "langPageName": "言語選択",
+     "langInitOperName": "初期表示",
+     "langBtnOperName": "言語選択",
+
+     "indexPageName": "ホーム",
+     "indexInitOperName": "初期表示",
+     "mapOperName": "地図・交通",
+     "spotOperName": "周辺検索",
+     "couponOperName": "クーポン",
+     "brochureOperName": "パンフレット",
+
+     "mapPageName": "地図・交通情報",
+     "mapInitOperName": "初期表示",
+     "mapDetailOperName": "詳細表示",
+
+     "mapDetailPageName": "地図・交通情報詳細",
+     "mapPageDetailName": "初期表示",
+     "mapDetailOperInfo": "スマホでダウンロード",
+
+
+     "spotPageName": "検索条件指定（施設・観光）",
+     "spotOperSearchName": "条件検索",
+
+
+     "spotOnlinePageName": "施設・観光情報（オンライン）",
+     "spotOfflinePageName": "施設・観光情報（オフライン）",
+     "spotDetailPageName": "施設情報詳細",
+     "spotInitOperName": "初期表示",
+
+     "spotDetailOperName": "詳細表示",
+     "spotOperDetailInfo": "施設ID",
+     "spotdownloadMap": "地図ダウンロード",
+     "spotGoogleMap1": "徒歩Googleマップ",
+     "spotGoogleMap2": "タクシーGoogleマップ",
+     "spotGoogleMap3": "バス電車Googleマップ",
+     "spotGetCoupon": "クーポン取得",
+     "spotPrintCoupon": "クーポン印刷",
+
+
+
+
+
+     "couponPageName": "条件指定（クーポン）画面",
+     "couponOperSearchName": "条件検索",
+     "couponListPageName": "クーポン",
+     "couponPageDetailName": "クーポン詳細",
+     "couponInitOperName": "初期表示",
+     "couponDetailOperName": "詳細表示",
+     "couponOperDetailInfo": "クーポンID",
+
+
+     "brochurePageName": "パンフレット情報",
+     "brochureInitOperName": "初期表示",
+     "brochureOperDetailName": "詳細表示",
+
+     "brochureDetailPageName": "パンフレット情報詳細",
+     "brochureDetailOperName": "初期表示",
+     "brochureOperDetailInfo": "スマホにダウンロード",
+
+
+     "changeLangOperName": "ボタンで言語切替",
+     "changeLangByTouchOperName": "カードで言語切替",
+     "ja": "日本語",
+     "en": "英語",
+     "cn": "中国語（簡体）",
+     "tw": "中国語（繁体）",
+     "ko": "韓国語",
+     "th": "タイ語",
+     "undefined": "unknown",
+     "-": "-",
+     "backOperName": "戻る",
+     "goIndexPageOperName": "ホーム"
+ }

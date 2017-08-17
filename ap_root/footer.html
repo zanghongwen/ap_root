@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            $('.p-modal-language a').on('click', function() {
+                sessionStorage.setItem('lang', $(this).attr('lang'))
+                location.reload()
+            })
+
+            $('#back').empty().text(words[lang].titles.back)
+            $('#language').empty().text(words[lang].titles.lang)
+            $('#home').empty().text(words[lang].titles.home)
+            // ホームボタンを削除すれば、ホームページの上で
+            if (location.pathname.indexOf('home.html') > -1) {
+                $('.l-footer ul > li:last-child').empty()
+                $('#back').on('click', function() {
+                    location.href = 'index.html'
+                })
+            }
+
+            $('.js-modal-open').click(function() {
+                $('body').append('<div class="l-modal-overlay"></div>')
+                $('.l-modal-overlay').fadeIn(200)
+                var modal = '#' + $(this).attr('data-target')
+                modalResize()
+                if ($('#pdfIframe')) $('#pdfIframe').hide()
+                $(modal).fadeIn(200)
+
+                $('.l-modal-overlay, .js-modal-close').off().click(function() {
+                    $(modal).fadeOut(200)
+                    if ($('#pdfIframe')) $('#pdfIframe').show()
+                    $('.l-modal-overlay').fadeOut(200, function() {
+                        $('.l-modal-overlay').remove()
+                    })
+                })
+                $(window).on('resize', function() {
+                    modalResize()
+                })
+
+                function modalResize() {
+                    var w = $(window).width()
+                    var h = $(window).height()
+                    var x = (w - $(modal).outerWidth(true)) / 2
+                    var y = (h - $(modal).outerHeight(true)) / 2
+                    $(modal).css({
+                        'left': x + 'px',
+                        'top': y + 'px'
+                    })
+                }
+            })
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <iframe width="0" height="0" frameborder="0" src="lib/readCard.html"></iframe>
+    <footer class="l-footer">
+        <p class="p-gnav-left"><a href="#" id="back" operId="backOperName" onclick="javascript:window.history.back(-1);return false;" class="c-btn-return"></a></p>
+        <ul class="p-gnav-right">
+            <li><a class="c-btn-language js-modal-open" id="language" data-target="modal-language"></a></li>
+            <li><a href="home.html" id="home" operId="goIndexPageOperName" class="c-btn-home"></a></li>
+        </ul>
+    </footer>
+    <div class="l-modal-content" id="modal-language">
+        <p class="c-modal-close js-modal-close"></p>
+        <ul class="p-modal-language">
+            <li><a lang="cn" operId="changeLangOperName" unitId="cn">简体中文</a></li>
+            <li><a lang="tw" operId="changeLangOperName" unitId="tw">繁体中文</a></li>
+            <li><a lang="en" operId="changeLangOperName" unitId="en">English</a></li>
+            <li><a lang="ko" operId="changeLangOperName" unitId="ko">한국어</a></li>
+            <li><a lang="th" operId="changeLangOperName" unitId="th">ภาษาไทย</a></li>
+            <li><a lang="ja" operId="changeLangOperName" unitId="ja">日本語</a></li>
+        </ul>
+        <p class="u-mt40 u-txt-c"><span class="c-btn-close js-modal-close">閉じる</span></p>
+    </div>
+</body>
+
+</html>
