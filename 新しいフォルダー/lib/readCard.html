@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DemoCSharpActiveX webpage</title>
+    <script src='1/jquery/jquery-2.2.3.min.js'></script>
+    <script src='3/logs.js'></script>
+</head>
+
+<body>
+    <script type='text/javascript'>
+    window.objectLoadFailure = false
+    var langArr = ['ja', 'en', 'cn', 'tw', 'ko', 'th']
+    // miqip code
+    var etaArr = ['6A61', '656E', '7A68', '5A48', '6B6F', '7468']
+
+    function editCardInfo(cardinfo) {
+        var infos = cardinfo.split(',')
+        var status = infos[1]
+        var idm = infos[2]
+        var eta = infos[3]
+        var x = ''
+
+        if (status === '00') {
+            for (var i=0;i<4;i++)
+            {
+                var card_lang = eta.substr((4 * i), 4)
+                var index = $.inArray(card_lang, etaArr)
+                if (index > -1){
+                    x = langArr[index]
+                    break
+                }
+            }
+            //console.log('Reader result is: ' + x + ' eta:' + eta)
+        }
+
+        var url = top.document.location.href
+        var lang = sessionStorage.getItem('lang')
+        if (lang != x && x !=  '') {
+            sessionStorage.setItem('idm', idm)
+            sessionStorage.setItem('eta', eta)
+            sessionStorage.setItem('lang', x)
+            if (url.indexOf('index') >= 0) {
+                top.document.location.href = '/home.html'
+            } else {
+                top.document.location.reload(true)
+            }
+        }
+    }
+    </script>
+    <object id='ReaderObject' classid='CLSID:9AAEF05A-FA7E-4250-BE2D-9C734E9D99FA'></object>
+    <script type='text/javascript' for='ReaderObject' event='OnUpdateETA(eta)'>
+        editCardInfo(eta)
+    </script>
+    <script type='text/javascript' for='window' event='onload'>
+    try {
+        var obj = document.ReaderObject
+        if (obj) {
+            var t = setTimeout(function() { ReaderObject.Register(); }, 300)
+        } else {
+            console.log('Object is not created!')
+        }
+    } catch (ex) {
+        console.log('Some error happens, error message is: ' + ex.Description)
+    }
+    </script>
+</body>
+
+</html>

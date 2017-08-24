@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>施設・観光</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/spot_search.js"></script>
+    <script src="./data/spot.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var spotView, Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            spotView = new spotView()
+            spotView.init()
+
+            // ログ
+            Logs = new Logs()
+
+            // 初期化ログ
+            Logs.writeLog('spotPageName', 'spotInitOperName')
+
+            // ページジャンプログ
+            Logs.log('spotPageName')
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <header class="l-header">
+        <h1 class="p-pagename__search" id="spot"></h1>
+    </header>
+    <div class="l-container">
+        <div class="l-contents">
+            <div class="l-row-gray">
+                <h2 class="p-ttl-underline" id="genreName"></h2>
+                <ul class="p-list-search">
+                    <li>
+                        <input type="radio" name="genre" value="C_EVT" class="c-btn-genre" id="genre1">
+                        <label class="c-btn-genre__label" for="genre1" id="genreLabel1"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_VEC" class="c-btn-genre" id="genre2">
+                        <label class="c-btn-genre__label" for="genre2" id="genreLabel2"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_STY" class="c-btn-genre" id="genre3">
+                        <label class="c-btn-genre__label" for="genre3" id="genreLabel3"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_LOK" class="c-btn-genre" id="genre4">
+                        <label class="c-btn-genre__label" for="genre4" id="genreLabel4"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_BUY" class="c-btn-genre" id="genre5">
+                        <label class="c-btn-genre__label" for="genre5" id="genreLabel5"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_PLY" class="c-btn-genre" id="genre6">
+                        <label class="c-btn-genre__label" for="genre6" id="genreLabel6"></label>
+                    </li>
+                    <li>
+                        <input type="radio" name="genre" value="C_EAT" class="c-btn-genre" id="genre7">
+                        <label class="c-btn-genre__label" for="genre7" id="genreLabel7"></label>
+                    </li>
+                </ul>
+                <h2 class="p-ttl-underline u-mt60" id="distanceName"></h2>
+                <ul class="p-list-search">
+                    <li>
+                        <input type="radio" name="distance" value="100" class="c-btn-distance" id="distance1">
+                        <label class="c-btn-distance__label" for="distance1">～100m</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="distance" value="300" class="c-btn-distance" id="distance2">
+                        <label class="c-btn-distance__label" for="distance2">～300m</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="distance" value="500" class="c-btn-distance" id="distance3">
+                        <label class="c-btn-distance__label" for="distance3">～500m</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="distance" value="1000" class="c-btn-distance" id="distance4">
+                        <label class="c-btn-distance__label" for="distance4">～1km</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="distance" value="2000" class="c-btn-distance" id="distance5">
+                        <label class="c-btn-distance__label" for="distance5">～2km</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="distance" value="3000" class="c-btn-distance" id="distance6">
+                        <label class="c-btn-distance__label" for="distance6">2km～</label>
+                    </li>
+                </ul>
+                <p class="u-txt-c u-mt60">
+                    <a name="" id="saerch" operId="" class="c-btn-search"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>クーポン</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/jquery-qrcode/jquery.qrcode-0.12.0.min.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/spot_detail.js"></script>
+    <script src="./data/spot.js"></script>
+    <script src="./data/J2G.js"></script>
+    <script src="./data/coupon.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var couponDetailView, Logs
+
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            // ログ
+            Logs = new Logs()
+
+            // APログ
+            Logs.writeLogAp('spotDetailPageName',J2G[lang].concat(spot[lang])) 
+
+            couponDetailView = new couponDetailView()
+            couponDetailView.init()
+
+            // 初期化ログ
+            Logs.writeLog('spotDetailPageName', 'spotInitOperName')
+
+            // ページジャンプログ
+            Logs.log('spotDetailPageName')
+
+            if (window.navigator.onLine === false) {
+                $('.p-tab-nav').hide()
+                $(' .l-tab-content').hide()
+            }
+
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <div class="l-contents">
+        <div id="slider" class="l-image-slider">
+        </div>
+        <div class="l-about">
+        </div>
+        <div class="l-banner-slider" id="couponSlider">
+            </ul>
+        </div>
+        <div class="l-detail">
+            <table class="p-table-detail">
+            </table>
+        </div>
+        <div class="l-tab js-tabs">
+            <p class="p-btn-map"><a id="downloadMap" operId="spotdownloadMap" class="c-btn-map js-modal-open" data-target="modal-map"></a></p>
+            <ul class="p-tab-nav">
+            </ul>
+            <div class="l-tab-content">
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script>
+    $('#footer').load('footer.html')
+    </script>
+    <div class="l-modal-content" id="modal-coupon">
+        <p class="c-modal-close js-modal-close"></p>
+        <div class="l-modal-block__red">
+            <h2 class="p-modal-block__coupon"><img src="./images/ttl_coupon.png" alt="Coupon!"></h2>
+            <div class="p-coupon__lang">
+                <p><strong class="u-fz22 u-color-red" id="condition"></strong></p>
+                <table class="p-coupon__detail">
+                    <tr>
+                        <th id="expiration"></th>
+                        <td><strong class="u-color-red" id="expirationDate"></strong></td>
+                    </tr>
+                </table>
+                <h3 class="p-modal-block__spot" id="spotName"></h3>
+                <table class="p-coupon__detail">
+                    <tr>
+                        <th id="addressTitle"></th>
+                        <td id="address"></td>
+                    </tr>
+                    <tr>
+                        <th id="telTitle"></th>
+                        <td id="tel"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="ja">
+                <p><strong class="u-fz22 u-color-red" id="condition"></strong></p>
+                <table class="p-coupon__detail">
+                    <tr>
+                        <th id="expiration"></th>
+                        <td><strong class="u-color-red" id="expirationDate"></strong></td>
+                    </tr>
+                </table>
+                <h3 class="p-modal-block__spot" id="spotName"></h3>
+                <table class="p-coupon__detail">
+                    <tr>
+                        <th id="addressTitle"></th>
+                        <td id="address"></td>
+                    </tr>
+                    <tr>
+                        <th id="telTitle"></th>
+                        <td id="tel"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <p class="u-mt40 u-txt-c"><a id="btn-print" unitId="" operId="spotPrintCoupon" href="javascript:void(0)" onclick="printCoupon();return false;" class="c-btn-print"></a></p>
+        <dl class="p-qrcorde">
+            <dt>
+                <p class="u-txt-c" id="couponQrcode"></p>
+            </dt>
+            <dd><strong id="couponNote" class="u-fz20 u-color-red"></strong></dd>
+        </dl>
+        <p class="u-mt40 u-txt-c"><span class="c-btn-close js-modal-close" id="close">閉じる</span></p>
+    </div>
+    <div class="l-modal-content" id="modal-map">
+    </div>
+    <OBJECT classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" height="0" id="WB" width="0"></OBJECT>
+    <script>
+    function pagesetup_null() {
+        var top = '0.000000'
+        var bottom = '0.350000'
+        var left = '0.000000'
+        var right = '0.000000'
+        var background = 'yes'
+
+        var HKEY_Root, HKEY_Path, HKEY_Key
+        HKEY_Root = 'HKEY_CURRENT_USER '
+        HKEY_Path = '\\Software\\Microsoft\\Internet Explorer\\PageSetup\\'
+        try {
+            var Wsh = new ActiveXObject('WScript.Shell ')
+            HKEY_Key = 'header '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, '')
+            HKEY_Key = 'footer '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, '')
+            HKEY_Key = 'margin_top '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, top)
+            HKEY_Key = 'margin_bottom '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, bottom)
+            HKEY_Key = 'margin_left '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, left)
+            HKEY_Key = 'margin_right '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, right)
+            HKEY_Key = 'Print_Background '
+            Wsh.RegWrite(HKEY_Root + HKEY_Path + HKEY_Key, background)
+        } catch (e) {}
+    }
+
+    function printCoupon() {
+        pagesetup_null()
+        document.getElementById('btn-print').setAttribute('disabled', 'disabled')
+        document.getElementById('btn-print').removeAttribute('href')
+
+        var OLECMDID_PRINT = 6
+        var OLECMDEXECOPT_DONTPROMPTUSER = 2
+        var OLECMDEXECOPT_PROMPTUSER = 1
+        document.getElementById('WB').ExecWB(OLECMDID_PRINT, OLECMDEXECOPT_DONTPROMPTUSER, 1)
+
+        setTimeout(function() {
+            document.getElementById('btn-print').removeAttribute('disabled')
+            document.getElementById('btn-print').setAttribute('href ', 'javascript:void(0)')
+        },
+        3000)
+    }
+    </script>
+</body>
+
+</html>

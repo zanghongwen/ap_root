@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- ズーム禁止 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>言語選択</title>
+    <link type="text/css" href="./lib/style.css" rel="stylesheet" />
+    <script src="./lib/1/jquery/jquery.min.js"></script>
+    <script src="./lib/1/loopslider.js"></script>
+    <script src="./lib/1/slick.js"></script>
+    <script src="./lib/1/organictabs.js"></script>
+    <script src="./lib/1/modalwindow.js"></script>
+    <script src="./lib/1/matchHeight.min.js"></script>
+    <script src="./lib/1/common.js"></script>
+    <script src="./lib/def.js"></script>
+    <script src="./lib/3/logs.js"></script>
+    <script type="text/javascript">
+    var Logs
+    (function($) {
+        // DOMロード完了後
+        $(function() {
+            // ログ
+            Logs = new Logs()
+            Logs.currentlang = '-'
+            // 初期化ログ
+            Logs.writeLog('langPageName', 'langInitOperName')
+
+            // ページジャンプログ
+            Logs.log('langPageName')
+            sessionStorage.setItem('lang', '')
+
+            $('.p-language a').on('click', function() {
+                sessionStorage.setItem('lang', $(this).attr('lang'))
+                location.href = 'home.html'
+            })
+        })
+    })(jQuery)
+    </script>
+</head>
+
+<body>
+    <iframe width="0" height="0" frameborder="0" src="lib/readCard.html"></iframe>
+    <div class="l-loopslider1" rel="loopleft">
+        <ul class="p-loopslider">
+            <li><img src="./images/loopimg_1-1.jpg"></li>
+            <li><img src="./images/loopimg_1-2.jpg"></li>
+            <li><img src="./images/loopimg_1-3.jpg"></li>
+            <li><img src="./images/loopimg_1-4.jpg"></li>
+        </ul>
+    </div>
+    <h1 class="p-logo"><img src="./images/logo.png" alt="riaco"></h1>
+    <div class="l-language">
+        <div class="l-language-inner">
+            <ul class="p-language">
+                <li><a href="#" lang="cn" operId="langBtnOperName" unitId="中国語（簡体）">简体中文</a></li>
+                <li><a href="#" lang="tw" operId="langBtnOperName" unitId="中国語（繁体）">繁体中文</a></li>
+                <li><a href="#" lang="en" operId="langBtnOperName" unitId="英語">English</a></li>
+                <li><a href="#" lang="ko" operId="langBtnOperName" unitId="韓国語">한국어</a></li>
+                <li><a href="#" lang="th" operId="langBtnOperName" unitId="タイ語">ภาษาไทย</a></li>
+                <li><a href="#" lang="ja" operId="langBtnOperName" unitId="日本語">日本語</a></li>
+            </ul>
+        </div>
+        <p class="p-touchme"><img src="./images/txt_touchme.png" alt="Touch me!"></p>
+    </div>
+    <div class="l-loopslider2" rel="loopright">
+        <ul class="p-loopslider">
+            <li><img src="./images/loopimg_2-1.jpg"></li>
+            <li><img src="./images/loopimg_2-2.jpg"></li>
+            <li><img src="./images/loopimg_2-3.jpg"></li>
+            <li><img src="./images/loopimg_2-4.jpg"></li>
+            <li><img src="./images/loopimg_2-5.jpg"></li>
+            <li><img src="./images/loopimg_2-6.jpg"></li>
+        </ul>
+    </div>
+    <div class="l-loopslider2" rel="loopleft">
+        <ul class="p-loopslider">
+            <li><img src="./images/loopimg_3-1.jpg"></li>
+            <li><img src="./images/loopimg_3-2.jpg"></li>
+            <li><img src="./images/loopimg_3-3.jpg"></li>
+            <li><img src="./images/loopimg_3-4.jpg"></li>
+            <li><img src="./images/loopimg_3-5.jpg"></li>
+            <li><img src="./images/loopimg_3-6.jpg"></li>
+        </ul>
+    </div>
+</body>
+
+</html>
